@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CategoryService, Category } from '../../services/category.service';
 import { PostService } from '../../services/post.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -20,11 +21,24 @@ export class AddPostComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.categoryService.getAll().subscribe(data => this.categories = data);
+  }
+
+  get title() {
+    return this.postForm.get('title');
+  }
+
+  get category() {
+    return this.postForm.get('categoryId');
+  }
+
+  get content() {
+    return this.postForm.get('content');
   }
 
   onSubmit() {
@@ -54,8 +68,12 @@ export class AddPostComponent implements OnInit {
         showConfirmButton: false,
         timer: 2000
       }).then(() => {
-        window.location.href = '/';
+        this.router.navigate(['/']);
       });
     });
+  }
+
+  onCancel() {
+    this.router.navigate(['/']);
   }
 }

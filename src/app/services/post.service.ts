@@ -32,7 +32,6 @@ export class PostService {
     return this.http.delete(`${this.postsUrl}/${id}`);
   }
 
-  // ✅ Session 6: teacher wants search by value
   search(value: string): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.postsUrl}?value=${value}`);
   }

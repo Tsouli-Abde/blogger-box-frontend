@@ -2,7 +2,6 @@ export interface Post{
     id:string;
     title:string;
     content:string;
-    //createdDate: Date;
     createdDate: string;
     category:Category;
 }
@@ -15,7 +14,7 @@ export interface Category {
 export interface PostRequest {
     title: string;
     content: string;
-    categoryId: string;   // ✅ only categoryId for creation
+    categoryId: string;
 }
 
 export const POSTS = [
