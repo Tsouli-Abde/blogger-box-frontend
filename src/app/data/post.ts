@@ -1,11 +1,21 @@
-import { Category } from "./category";
-
 export interface Post{
     id:string;
     title:string;
     content:string;
-    createdDate: Date;
+    //createdDate: Date;
+    createdDate: string;
     category:Category;
+}
+
+export interface Category {
+    id: string;
+    name: string;
+}
+
+export interface PostRequest {
+    title: string;
+    content: string;
+    categoryId: string;   // ✅ only categoryId for creation
 }
 
 export const POSTS = [
